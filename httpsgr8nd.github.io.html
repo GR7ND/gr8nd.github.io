@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Генератор чисел</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: url(https://images.wallpaperscraft.ru/image/single/zdaniia_arhitektura_ogni_865586_3840x2400.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+        .number-generator {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 600px;
+            text-align: center;
+            margin-top: 100px;
+        }
+        .number-generator-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .number-label {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .number-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .number-input:focus {
+            outline: none;
+            border-color: #ff6b00;
+        }
+        .number-submit {
+            background-color: #ff6b00;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 0 10px #ff6b00, 0 0 20px #ff6b00, 0 0 40px #ff6b00, 0 0 80px #ff6b00;
+            transition: all 0.5s ease;
+        }
+        .number-submit:hover {
+            background-color: #ff9000;
+            box-shadow: 0 0 
+50px #ff6b00, 0 0 100px #ff6b00, 0 0 150px #ff6b00, 0 0 200px #ff6b00;
+transform: scale(1.1);
+}
+</style>
+
+</head>
+<body>
+    <div class="number-generator">
+        <h1 class="number-generator-header">Генератор случайных чисел</h1>
+        <label for="min" class="number-label">Минимальное значение:</label>
+        <input type="number" id="min" class
+="number-input" min="-1000000" max="1000000">
+<label for="max" class="number-label">Максимальное значение:</label>
+<input type="number" id="max" class="number-input" min="-1000000" max="1000000">
+<button id="generate-btn" class="number-submit">Сгенерировать число</button>
+<p id="result"></p>
+</div>
+<script>
+    const generateBtn = document.getElementById("generate-btn");
+    const minInput = document.getElementById("min");
+    const maxInput = document.getElementById("max");
+    const result = document.getElementById("result");
+    
+    generateBtn.addEventListener("click", () => {
+        const min = parseInt(minInput.value);
+        const max = parseInt(maxInput.value);
+        
+        if (isNaN(min) || isNaN(max)) {
+            result.textContent = "Ошибка: введите числовое значение в оба поля";
+        } else if (min >= max) {
+            result.textContent = "Ошибка: минимальное значение не может быть больше или равно максимальному";
+        } else {
+            const randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
+            result.textContent = `Сгенерированное число: ${randomNumber}`;
+        }
+    });
+</script>
+</body>
+</html>
